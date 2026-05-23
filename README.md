@@ -1,0 +1,1 @@
+feature/local-conversation-context: locally running llm + conversation has the context of the earlier messages of the conversation
