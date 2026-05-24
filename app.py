@@ -1,19 +1,22 @@
 import uuid
+import os
 
 import streamlit as st
 from langchain.agents import create_agent
 from langgraph.checkpoint.redis import RedisSaver
-
+from dotenv import load_dotenv
 
 import logging
 import warnings
+
+load_dotenv()  # Load environment variables from .env file
 
 # Suppress all Python warnings at the interpreter level
 warnings.filterwarnings("ignore")
 # Suppress transformers warnings specifically in Streamlit's logger
 logging.getLogger("transformers").setLevel(logging.ERROR)
 
-REDIS_URL = "redis://localhost:6379/0"
+REDIS_URL = os.getenv("REDIS_URL")
 
 # cache the checkpointer and agent to avoid re-creating them on every interaction
 @st.cache_resource
