@@ -1,8 +1,8 @@
 langchain
 streamlit
-langchain_ollama
 torch
 torchvision
 langgraph-checkpoint-redis
 redis
 python-dotenv
+langchain-groq
