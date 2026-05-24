@@ -5,6 +5,7 @@ import streamlit as st
 from langchain.agents import create_agent
 from langgraph.checkpoint.redis import RedisSaver
 from dotenv import load_dotenv
+from langchain_groq import ChatGroq
 
 import logging
 import warnings
@@ -30,8 +31,10 @@ def get_checkpointer():
 @st.cache_resource
 def get_agent():
     checkpointer = get_checkpointer()
+    llm = ChatGroq(model="llama-3.1-8b-instant", temperature=0.7)
+    
     agent = create_agent(
-        "ollama:llama3",
+        llm,
         system_prompt="You are a helpful assistant. Remember details from earlier messages in the conversation",
         checkpointer=checkpointer,
     )
