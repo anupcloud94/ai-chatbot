@@ -6,3 +6,5 @@ langgraph-checkpoint-redis
 redis
 python-dotenv
 langchain-groq
+SQLAlchemy
+psycopg2
